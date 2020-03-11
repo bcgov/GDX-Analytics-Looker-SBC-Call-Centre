@@ -1,4 +1,5 @@
 view: service_bc_call_centre_escalation {
+
   derived_table: {
     sql: SELECT
           escl.id,
@@ -16,16 +17,19 @@ view: service_bc_call_centre_escalation {
   dimension: id {
     type: number
     sql: ${TABLE}.id ;;
+    group_label: "Escalation Info"
   }
 
   dimension: group {
     type: string
     sql: ${TABLE}.group ;;
+    group_label: "Escalation Info"
   }
 
   dimension: areaofincidentorrequest {
     type: string
     sql: ${TABLE}.areaofincidentorrequest ;;
+    group_label: "Escalation Info"
   }
 
   dimension: receiveddatekey {
@@ -46,11 +50,13 @@ view: service_bc_call_centre_escalation {
   dimension: businessdaysaged {
     type: number
     sql: ${TABLE}.businessdaysaged ;;
+    group_label: "Escalation Info"
   }
 
   dimension: resolvedwithinreportingmonth {
     type: yesno
     sql: ${TABLE}.resolvedwithinreportingmonth ;;
+    group_label: "Escalation Info"
   }
 
   measure: count {
