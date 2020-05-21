@@ -17,7 +17,7 @@ view: service_bc_call_centre_csat {
           dd.day,
           dd.weekday,
           dd.weekdayname
-        FROM servicebc.call_centre_csat_gdxdxd2660 as csat
+        FROM servicebc.call_centre_csat_gdxdsd2660 as csat
         JOIN servicebc.datedimension AS dd
         ON csat.datekey = dd.datekey
         ;;
