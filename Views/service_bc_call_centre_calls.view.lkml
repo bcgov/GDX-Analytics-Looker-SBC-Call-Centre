@@ -17,7 +17,7 @@ view: service_bc_call_centre_calls {
           dd.day,
           dd.weekday,
           dd.weekdayname
-        FROM servicebc.call_centre_calls_gdxdsd2660 AS ccc
+        FROM servicebc.call_centre_calls AS ccc
         JOIN servicebc.datedimension AS dd
         ON ccc.datekey = dd.datekey
         ;;

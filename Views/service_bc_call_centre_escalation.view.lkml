@@ -24,7 +24,7 @@ view: service_bc_call_centre_escalation {
           dd.day,
           dd.weekday,
           dd.weekdayname
-        FROM servicebc.call_centre_escalation_gdxdsd2660 as escl
+        FROM servicebc.call_centre_escalation as escl
         JOIN servicebc.datedimension AS dd
         ON escl.receiveddatekey = dd.datekey
         ;;

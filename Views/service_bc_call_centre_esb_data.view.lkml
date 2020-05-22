@@ -17,7 +17,7 @@ view: service_bc_call_centre_esb_data {
           dd.day,
           dd.weekday,
           dd.weekdayname
-        FROM servicebc.call_centre_esb_data_gdxdsd2660 as esb
+        FROM servicebc.call_centre_esb_data as esb
         JOIN servicebc.datedimension AS dd
         ON esb.datekey = dd.datekey
         ;;
