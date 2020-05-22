@@ -1,21 +1,46 @@
-# include: "/Includes/date_dimensions.view"
+include: "/Includes/date_dimensions.view"
 
 view: service_bc_call_centre_csat {
 
-  # extends: [date_dimensions]
+  extends: [date_dimensions]
 
   derived_table: {
     sql: SELECT
-          csat.*
-        FROM servicebc.call_centre_csat as csat
+          csat.*,
+          dd.isweekend::BOOLEAN,
+          dd.isholiday::BOOLEAN,
+          dd.lastdayofpsapayperiod::date,
+          dd.fiscalyear,
+          dd.fiscalmonth,
+          dd.fiscalquarter,
+          dd.sbcquarter,
+          dd.day,
+          dd.weekday,
+          dd.weekdayname
+        FROM servicebc.call_centre_csat_gdxdsd2660 as csat
+        JOIN servicebc.datedimension AS dd
+        ON csat.datekey = dd.datekey
         ;;
   }
 
-  # datekey the join reference for datedimension -- this is currently an INT in the Redshift table which cannot cast to a date and so cannot be joined
-  dimension: datekey {
-    type: number
+  # datekey the join reference for datedimension
+  dimension_group: date {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      # quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
     sql: ${TABLE}.datekey ;;
     group_label:  "Date"
+    # Setting the label to nothing supresses the dimension_groups name appearing before the timeframe in the field label
+    # Without this, labels on these timeframes will appear as "Date Date" and "Date Week", for example.
+    label: ""
   }
 
   dimension: id {

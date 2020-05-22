@@ -1,4 +1,8 @@
+include: "/Includes/date_dimensions.view"
+
 view: service_bc_call_centre_escalation {
+
+  extends: [date_dimensions]
 
   derived_table: {
     sql: SELECT
@@ -9,8 +13,20 @@ view: service_bc_call_centre_escalation {
           escl.receivedtimekey,
           escl.completeddatekey,
           escl.businessdaysaged,
-          escl.resolvedwithinreportingmonth
-        FROM servicebc.call_centre_escalation as escl
+          escl.resolvedwithinreportingmonth,
+          dd.isweekend::BOOLEAN,
+          dd.isholiday::BOOLEAN,
+          dd.lastdayofpsapayperiod::date,
+          dd.fiscalyear,
+          dd.fiscalmonth,
+          dd.fiscalquarter,
+          dd.sbcquarter,
+          dd.day,
+          dd.weekday,
+          dd.weekdayname
+        FROM servicebc.call_centre_escalation_gdxdsd2660 as escl
+        JOIN servicebc.datedimension AS dd
+        ON escl.receiveddatekey = dd.datekey
         ;;
   }
 
@@ -32,9 +48,20 @@ view: service_bc_call_centre_escalation {
     group_label: "Escalation Info"
   }
 
-  dimension: receiveddatekey {
-    type: number
+  dimension_group: receiveddatekey {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      year
+    ]
+    convert_tz: no
+    datatype: date
     sql: ${TABLE}.receiveddatekey ;;
+    group_label:  "Date"
+    label: "Received"
   }
 
   dimension: receivedtimekey {
@@ -42,9 +69,20 @@ view: service_bc_call_centre_escalation {
     sql: ${TABLE}.receivedtimekey ;;
   }
 
-  dimension: completeddatekey {
-    type: number
+  dimension_group: completeddatekey {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      year
+    ]
+    convert_tz: no
+    datatype: date
     sql: ${TABLE}.completeddatekey ;;
+    group_label:  "Date"
+    label: "Completed"
   }
 
   dimension: businessdaysaged {
