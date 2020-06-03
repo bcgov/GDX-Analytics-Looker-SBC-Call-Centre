@@ -3,7 +3,7 @@ This is the Looker project for the Government of British Columbia’s Service BC
 
 # Features
 
-Looker is a data vision tool that is used with Snowplow Analytics, it displays the data in dashboards that a user can customize.
+This Looker project provides views into the underlying database tables storing asset information for the Service BC Call Centre.
 
 ## Requirements
  
