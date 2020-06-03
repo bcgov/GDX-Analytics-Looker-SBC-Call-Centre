@@ -3,7 +3,7 @@ This is the Looker project for the Government of British Columbia’s Service BC
 
 # Features
 
-This Looker project provides views into the underlying database tables storing asset information for the Service BC Call Centre.
+This Looker project provides views into the underlying database tables storing Service BC Call Centre tracked data.
 
 ## Requirements
  
