@@ -1,13 +1,27 @@
 # GDX Looker SBC Call Centre Block
-This is for the Government of British Columbia’s SBC Call Centre LookerML project. LookerML is a language for describing dimensions, aggregates, calculations and data relationships in a SQL database
+This is the Looker project for the Government of British Columbia’s Service BC Call Centre.
 
 # Features
 
 Looker is a data vision tool that is used with Snowplow Analytics, it displays the data in dashboards that a user can customize.
 
-# Project Status
+## Requirements
+ 
+Requires deployment onto a [Looker](https://looker.com/) instance with access to database tables as referenced by the '*.lkml' files.
 
-Currently this project is still in development.
+## Project Status
+
+This project is in production and the GDX Analytics Team will continue to update and maintain the project as required.
+
+## Related Repositories
+ 
+### [GDX-Analytics/](https://github.com/bcgov/GDX-Analytics)
+
+This is the central repository for work by the GDX Analytics Team.
+
+## Getting Help or Reporting an Issue
+
+For any questions regarding this project, or for inquiries about starting a new analytics account, please contact the GDX Analytics Team.
 
 # Getting Help
 
